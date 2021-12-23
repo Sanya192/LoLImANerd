@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using LolData;
@@ -12,13 +13,15 @@ namespace LoLImANerd
         static void Main(string[] args)
         {
             var data = XMLHelper.ParseXML(XMLHelper.FetchTheLatestAndConvertToXML());
+          
+            //banning
+            data.Data.Champions = data.Data.Champions.Where(x => x.Name != "Yasuo").ToList();
+            CreateXMLFromDatabank("Good.XML", data);
+            CreateJSONFromDatabank("Good.json", data);
             foreach (var item in data.Data.Champions)
             {
                 Console.WriteLine(item);
             }
-            XMLHelper.FetchTheLatestAndConvertToXML();
-            CreateXMLFromDatabank("Good.XML", data);
-            CreateJSONFromDatabank("Good.json", data);
             Console.ReadLine();
         }
         static void CreateXMLFromDatabank(string output,Databank databank)
