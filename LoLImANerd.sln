@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLImANerd", "LoLImANerd\LoLImANerd.csproj", "{B97AEF51-BA10-4BF6-AF53-EB86116B4D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LolData", "LolData\LolData.csproj", "{8C171D19-699A-4C25-94DD-B41A2633A5ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B97AEF51-BA10-4BF6-AF53-EB86116B4D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97AEF51-BA10-4BF6-AF53-EB86116B4D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97AEF51-BA10-4BF6-AF53-EB86116B4D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97AEF51-BA10-4BF6-AF53-EB86116B4D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C171D19-699A-4C25-94DD-B41A2633A5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C171D19-699A-4C25-94DD-B41A2633A5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C171D19-699A-4C25-94DD-B41A2633A5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C171D19-699A-4C25-94DD-B41A2633A5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39CEF861-148D-4F73-A755-29F1A9480285}
+	EndGlobalSection
+EndGlobal
