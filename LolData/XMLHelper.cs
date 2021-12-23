@@ -91,9 +91,9 @@ namespace LolData
         {
             string version = JsonConvert.DeserializeObject<string[]>(client.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json").Result)
                 .First();
-            var result = JsonConvert.DeserializeXmlNode(client.GetStringAsync($"http://ddragon.leagueoflegends.com/cdn/{version}/data/en_US/champion.json").Result, "root");
-
-            return XElement.Load(new XmlNodeReader(result));
+            var result = XElement.Load(new XmlNodeReader(JsonConvert.DeserializeXmlNode(client.GetStringAsync($"http://ddragon.leagueoflegends.com/cdn/{version}/data/en_US/champion.json").Result, "root")));
+            result.Save("latestFetch.XML");
+            return result;
         }
     }
 
