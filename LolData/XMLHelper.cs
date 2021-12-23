@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace LolData
@@ -9,6 +13,10 @@ namespace LolData
         public static Databank ParseXML(string path)
         {
             var xmlDoc = XElement.Load(path);
+            return ParseXML(xmlDoc);
+        }
+        public static Databank ParseXML(XElement xmlDoc)
+        {
             var Databank = new Databank
             {
                 Type = xmlDoc.Elements().First(x => x.Name.ToString() == "type").Value,
@@ -16,10 +24,9 @@ namespace LolData
                 Version = xmlDoc.Elements().First(x => x.Name.ToString() == "version").Value,
                 Data = new Data(xmlDoc.Elements().First(x => x.Name.ToString() == "data").Elements().Select(x => ParseChampionXML(x)).ToList())
             };
-
-
             return Databank;
         }
+
         public static Champion ParseChampionXML(XElement xmlDoc)
         {
             var champion = new Champion
@@ -77,6 +84,16 @@ namespace LolData
                 Attackspeed = Convert.ToDouble(stats.Elements().First(x => x.Name.ToString() == "attackspeed").Value),
             };
             return champion;
+        }
+
+        static HttpClient client = new();
+        public static XElement FetchTheLatestAndConvertToXML()
+        {
+            string version = JsonConvert.DeserializeObject<string[]>(client.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json").Result)
+                .First();
+            var result = JsonConvert.DeserializeXmlNode(client.GetStringAsync($"http://ddragon.leagueoflegends.com/cdn/{version}/data/en_US/champion.json").Result, "root");
+
+            return XElement.Load(new XmlNodeReader(result));
         }
     }
 

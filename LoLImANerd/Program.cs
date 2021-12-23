@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using LolData;
 using Newtonsoft.Json;
@@ -10,11 +11,12 @@ namespace LoLImANerd
     {
         static void Main(string[] args)
         {
-            var data = XMLHelper.ParseXML("Source.xml");
+            var data = XMLHelper.ParseXML(XMLHelper.FetchTheLatestAndConvertToXML());
             foreach (var item in data.Data.Champions)
             {
                 Console.WriteLine(item);
             }
+            XMLHelper.FetchTheLatestAndConvertToXML();
             CreateXMLFromDatabank("Good.XML", data);
             CreateJSONFromDatabank("Good.json", data);
             Console.ReadLine();
@@ -30,5 +32,6 @@ namespace LoLImANerd
             string json = JsonConvert.SerializeObject(databank,Formatting.Indented);
             File.WriteAllText(output,json);
         }
+
     }
 }
