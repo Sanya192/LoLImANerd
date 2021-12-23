@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Compile Update="Stats.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
